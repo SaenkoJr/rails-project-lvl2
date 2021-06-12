@@ -4,6 +4,9 @@ test:
 start:
 	bundle exec heroku local
 
+test:
+	bin/rails test
+
 lint:
 	bundle exec rubocop
 
@@ -31,3 +34,5 @@ db-console:
 
 docker-psql:
 	podman exec -it hexlet-app-postgres psql rails_project_lvl2_development -U postgres
+
+.PHONY: test
