@@ -19,6 +19,12 @@ jobs:
     strategy:
       matrix:
         ruby-version: ['2.7']
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_HOST_AUTH_METHOD: trust
+
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby

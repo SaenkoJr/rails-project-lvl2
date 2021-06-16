@@ -17,22 +17,22 @@ heroku-console:
 	heroku run rails console
 
 db-docker-run:
-	podman run --name hexlet-app-postgres \
+	docker run --name hexlet-app-postgres \
 		-e POSTGRES_HOST_AUTH_METHOD=trust \
 		-v pgdata:/var/lib/postgresql/data \
 		-p 5432:5432 \
 		-d postgres:13-alpine
 
 db-docker-up:
-	podman container start hexlet-app-postgres
+	docker container start hexlet-app-postgres
 
 db-docker-down:
-	podman container stop hexlet-app-postgres
+	docker container stop hexlet-app-postgres
+
+docker-psql:
+	docker exec -it hexlet-app-postgres psql rails_project_lvl2_development -U postgres
 
 db-console:
 	bin/rails dbconsole
-
-docker-psql:
-	podman exec -it hexlet-app-postgres psql rails_project_lvl2_development -U postgres
 
 .PHONY: test
