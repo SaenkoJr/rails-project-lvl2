@@ -1,4 +1,8 @@
+install:
+	bundle install
+
 setup:
+	cp -n .env.example .env || true
 	bin/setup
 	bin/rails db:fixtures:load
 
@@ -7,9 +11,6 @@ test:
 
 start:
 	bundle exec heroku local
-
-test:
-	bin/rails test
 
 lint:
 	bundle exec rubocop
