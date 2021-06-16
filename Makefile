@@ -1,3 +1,7 @@
+setup:
+	bin/setup
+	bin/rails db:fixtures:load
+
 test:
 	bin/rails test
 

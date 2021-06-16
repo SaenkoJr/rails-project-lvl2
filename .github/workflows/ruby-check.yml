@@ -40,4 +40,5 @@ jobs:
     - name: Run rubocop
       run: make lint
     - name: Run tests
+      run: make setup
       run: make test
