@@ -16,6 +16,10 @@ AllCops:
 Style/ClassAndModuleChildren:
   Enabled: false
 
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  SafeAutoCorrect: true
+
 Style/IfUnlessModifier:
   Enabled: false
 
