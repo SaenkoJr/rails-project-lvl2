@@ -21,21 +21,24 @@ linter-fix:
 heroku-console:
 	heroku run rails console
 
-db-docker-run:
-	docker run --name hexlet-app-postgres \
+db-podman-run:
+	podman run --name hexlet-app-postgres \
 		-e POSTGRES_HOST_AUTH_METHOD=trust \
 		-v pgdata:/var/lib/postgresql/data \
 		-p 5432:5432 \
 		-d postgres:13-alpine
 
-db-docker-up:
-	docker container start hexlet-app-postgres
+db-podman-up:
+	podman container start hexlet-app-postgres
 
-db-docker-down:
-	docker container stop hexlet-app-postgres
+podman-h:
+	podman -h
 
-docker-psql:
-	docker exec -it hexlet-app-postgres psql rails_project_lvl2_development -U postgres
+db-podman-down:
+	podman container stop hexlet-app-postgres
+
+podman-psql:
+	podman exec -it hexlet-app-postgres psql rails_project_lvl2_development -U postgres
 
 db-console:
 	bin/rails dbconsole

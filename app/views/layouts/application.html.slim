@@ -1,0 +1,11 @@
+doctype html
+html
+  head
+    = render 'layouts/shared/head'
+  body
+    = render 'layouts/shared/nav'
+    p.notice
+      = notice
+    p.alert
+      = alert
+    = yield
