@@ -2,10 +2,14 @@ doctype html
 html
   head
     = render 'layouts/shared/head'
-  body
+  body.d-flex.flex-column.h-100
     = render 'layouts/shared/nav'
     p.notice
       = notice
     p.alert
       = alert
-    = yield
+    main.flex-shrink-0
+      .container
+        .row
+          .col-lg-5.col-md-8.mx-auto
+            = yield
