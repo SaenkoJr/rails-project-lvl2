@@ -1,0 +1,5 @@
+<% 3.times do |n| %>
+  category_<%= n %>:
+    name: <%= Faker::Lorem.sentence %>
+<% end %>
+

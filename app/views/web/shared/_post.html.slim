@@ -1,0 +1,7 @@
+.col-sm-4
+  .card
+    .card-body
+      h3.card-title= link_to post.title, post_path(post), class: 'link-dark'
+      p.card-text= post.body
+    .card-footer
+      span= post.created_at.strftime('%d-%B-%Y')

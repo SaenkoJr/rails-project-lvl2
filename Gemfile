@@ -32,6 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 
+gem 'simple_form'
 gem 'slim-rails'
 
 group :development, :test do
@@ -41,7 +42,6 @@ group :development, :test do
   gem 'faker'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
-  gem 'sqlite3'
 end
 
 group :development do

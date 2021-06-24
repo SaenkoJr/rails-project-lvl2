@@ -1,10 +1,5 @@
-DEFAULTS: &DEFAULTS
-  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-
-one:
-  <<: *DEFAULTS
-  email: <%= Faker::Internet.email %>
-
-two:
-  <<: *DEFAULTS
-  email: <%= Faker::Internet.email %>
+<% 3.times do |n| %>
+  user_<%= n %>:
+    encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+    email: <%= Faker::Internet.email %>
+<% end %>

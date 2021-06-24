@@ -4,12 +4,12 @@ html
     = render 'layouts/shared/head'
   body.d-flex.flex-column.h-100
     = render 'layouts/shared/nav'
-    p.notice
-      = notice
-    p.alert
-      = alert
     main.flex-shrink-0
       .container
         .row
           .col-lg-5.col-md-8.mx-auto
+            p.notice
+              = notice
+            p.alert
+              = alert
             = yield

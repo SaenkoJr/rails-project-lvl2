@@ -1,0 +1,8 @@
+<% 3.times do |n| %>
+  post_<%= n %>:
+    title: <%= Faker::Lorem.sentence %>
+    body: <%= Faker::Lorem.paragraph %>
+    creator: user_<%= n %>
+    post_category: category_<%= n %>
+<% end %>
+
