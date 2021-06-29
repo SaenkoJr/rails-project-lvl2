@@ -1,3 +1,7 @@
+ARGS = $(filter-out $@,$(MAKECMDGOALS))
+%:
+	@:
+
 install:
 	bundle install
 
@@ -5,41 +9,39 @@ setup:
 	bin/setup
 	bin/rails db:fixtures:load
 
+db-setup:
+	bin/rails db:setup
+	bin/rails db:fixtures:load
+
 test:
-	bin/rails test
+	bin/rails test $(ARGS)
 
 start:
+	rm -rf tmp/pids/server.pid
+	bundle exec rails s -b '0.0.0.0' -p 5000
+
+heroku-start:
 	bundle exec heroku local
 
 lint:
 	bundle exec rubocop
 
-linter-fix:
+lint-fix:
 	bundle exec rubocop --auto-correct
 
 heroku-console:
 	heroku run rails console
 
-db-podman-run:
-	podman run --name hexlet-app-postgres \
-		-e POSTGRES_HOST_AUTH_METHOD=trust \
-		-v pgdata:/var/lib/postgresql/data \
-		-p 5432:5432 \
-		-d postgres:13-alpine
+app-test:
+	docker-compose run web make test $(ARGS)
 
-db-podman-up:
-	podman container start hexlet-app-postgres
+app-bash:
+	docker-compose run web bash
 
-podman-h:
-	podman -h
+app-rails-console:
+	docker-compose run web bin/rails c
 
-db-podman-down:
-	podman container stop hexlet-app-postgres
-
-podman-psql:
-	podman exec -it hexlet-app-postgres psql rails_project_lvl2_development -U postgres
-
-db-console:
-	bin/rails dbconsole
+app-db-setup:
+	docker-compose run web make db-setup
 
 .PHONY: test

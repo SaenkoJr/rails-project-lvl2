@@ -18,7 +18,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   timeout: 5000
-  host: localhost
+  host: db
   username: postgres
   password:
   # For details on connection pooling, see Rails configuration guide
