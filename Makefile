@@ -13,6 +13,9 @@ db-setup:
 	bin/rails db:setup
 	bin/rails db:fixtures:load
 
+db-migrate:
+	bin/rails db:migrate
+
 test:
 	bin/rails test $(ARGS)
 
