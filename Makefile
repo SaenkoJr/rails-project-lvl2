@@ -47,4 +47,7 @@ app-rails-console:
 app-db-setup:
 	docker-compose run web make db-setup
 
+app-db-migrate:
+	docker-compose run web make db-migrate
+
 .PHONY: test
