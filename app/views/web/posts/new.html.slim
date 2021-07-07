@@ -1,5 +1,6 @@
-.row.justify-content-center.md-3
-  .card.mb-3
-    .card-body
-      h1 New post
-      = render "form", post: @post
+h1 New post
+= render "form", post: @post
+
+hr
+
+= link_to 'Back', :back, class: 'btn btn-outline-primary'

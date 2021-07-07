@@ -1,5 +1,9 @@
 = simple_form_for post do |f|
+  = f.error_notification
+  = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
   = f.input :title
   = f.input :body, as: :text
-  = f.association :post_category
-  = f.button :submit
+  = f.association :post_category, prompt: 'Select category', input_html: { class: 'form-select' }
+
+  = f.button :submit, class: 'btn btn-outline-secondary'
