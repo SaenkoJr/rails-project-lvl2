@@ -1,16 +1,23 @@
 h1= @post.title
 p= @post.body
-= link_to 'Edit', edit_post_path(@post), class: 'link-secondary'
-= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'link-danger'
+
+- if @post.creator == current_user
+  = link_to 'Edit', edit_post_path(@post), class: 'link-secondary'
+  = link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'link-danger'
+
 hr
-h2 Comments
-span= link_to 'Add new comment', new_post_comment_path(@post)
+
+h3 Comments
+- if user_signed_in?
+  span= link_to 'Add new comment', new_post_comment_path(@post)
+
 ul.list-group.list-group-flush
   - @comments.each do |comment|
     li.list-group-item
       .d-flex.w-100.justify-content-between
-        h5.mb-1
+        h5.mb-1= comment.user.email
         small= comment.updated_at.strftime('%d-%B-%Y %H:%M')
       p.mb-1= comment.content
-      small= link_to 'Edit', edit_post_comment_path(@post, comment)
-      small= link_to 'Delete', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure ?' }
+      - if comment.user == current_user
+        small= link_to 'Edit', edit_post_comment_path(@post, comment)
+        small= link_to 'Delete', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure ?' }

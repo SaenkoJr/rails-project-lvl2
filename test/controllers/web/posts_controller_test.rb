@@ -44,6 +44,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
 
     assert post
     assert_redirected_to post_path(post)
+    assert_equal post.creator, @user
     assert_equal post.post_category, category
     assert_equal post.creator_id, @user.id
   end
@@ -69,9 +70,10 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
   test '#destroy' do
     post = posts('post_1')
 
-    delete post_path(post)
+    assert_difference('Post.count', -1) do
+      delete post_path(post)
+    end
 
     assert_redirected_to posts_path
-    assert_not_equal posts.count, Post.count
   end
 end

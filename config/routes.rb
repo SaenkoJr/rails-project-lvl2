@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   scope module: :web do
     root 'home#index'
-    resources :posts
+    resources :posts do
+      resources :comments, exclude: %i[index show], controller: 'post_comments'
+    end
   end
 end

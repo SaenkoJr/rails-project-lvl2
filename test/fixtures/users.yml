@@ -1,5 +1,5 @@
 <% 3.times do |n| %>
   user_<%= n %>:
     encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-    email: <%= Faker::Internet.email %>
+    email: <%= "user_#{n}@email.com" %>
 <% end %>

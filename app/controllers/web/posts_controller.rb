@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
-class Web::PostsController < ApplicationController
+class Web::PostsController < Web::ApplicationController
+  before_action :authenticate_user!, except: %i[index show]
+
   def index
     @posts = Post.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @comments = @post.post_comments.order(created_at: :desc)
   end
 
   def new
@@ -22,11 +25,9 @@ class Web::PostsController < ApplicationController
     @post.creator = current_user
 
     if @post.save
-      flash[:notice] = 'Post has been successfully created'
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: 'Post has been successfully created'
     else
-      flash[:notice] = 'Post has not been created'
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -34,23 +35,17 @@ class Web::PostsController < ApplicationController
     @post = Post.find(params[:id])
 
     if @post.update(post_params)
-      flash[:notice] = 'Post has been successfully updated'
-      redirect_to post_path(@post)
+      redirect_to post_path(@post), notice: 'Post has been successfully updated'
     else
-      flash[:notice] = 'Post has not been updated'
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:notice] = 'Post has been successfully deleted'
-      redirect_to posts_path
-    else
-      flash[:notice] = 'Post has not been deleted'
-      redirect_to post_path(@post)
-    end
+    @post.destroy
+
+    redirect_to posts_path, notice: 'Post has been successfully deleted'
   end
 
   private
