@@ -20,7 +20,7 @@ jobs:
       matrix:
         ruby-version: ['2.7']
     services:
-      postgres:
+      db:
         image: postgres
         env:
           POSTGRES_HOST_AUTH_METHOD: trust
