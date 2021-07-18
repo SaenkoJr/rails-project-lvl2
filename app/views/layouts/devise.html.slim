@@ -4,14 +4,9 @@ html
     = render 'layouts/shared/head'
   body.d-flex.flex-column.h-100
     = render 'layouts/shared/nav'
+    = render 'layouts/shared/flash'
     main.form-signin
       .container
         .row
           .col-lg-5.col-md-8.mx-auto
-            - if notice
-              p.alert.alert-success
-                = notice
-            - if alert
-              p.alert.alert-danger
-                = alert
             = yield

@@ -2,45 +2,45 @@
 
 class Web::PostCommentsController < Web::ApplicationController
   before_action :authenticate_user!
+  before_action :set_post
+  before_action :set_comment, only: %i[edit update destroy]
 
-  def new
-    @comment = PostComment.new
-  end
-
-  def edit
-    @comment = PostComment.find(params[:id])
-  end
+  def edit; end
 
   def create
-    @comment = PostComment.new(comment_params)
-    @comment.post_id = params[:post_id]
+    @comment = @post.post_comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
-      redirect_to post_path(params[:post_id]), notice: 'Comment has been successfully created'
+      redirect_to post_path(@post), notice: 'Comment has been successfully created'
     else
-      render :new, status: :unprocessable_entity
+      redirect_to post_path(@post), alert: 'Comment has not been created'
     end
   end
 
   def update
-    @comment = PostComment.find(params[:id])
-
     if @comment.update(comment_params)
-      redirect_to post_path(@comment.post_id), notice: 'Comment has been successfully updated'
+      redirect_to post_path(@post), notice: 'Comment has been successfully updated'
     else
       render :edit, statsu: :unprocessable_entity
     end
   end
 
   def destroy
-    @comment = PostComment.find(params[:id])
     @comment.destroy
 
-    redirect_to post_path(@comment.post_id), notice: 'Comment has been successfully deleted'
+    redirect_to post_path(@post), notice: 'Comment has been successfully deleted'
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:post_id])
+  end
+
+  def set_comment
+    @comment = @post.post_comments.find(params[:id])
+  end
 
   def comment_params
     params.require(:post_comment).permit(:content)

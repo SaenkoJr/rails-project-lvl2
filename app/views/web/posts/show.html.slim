@@ -2,22 +2,16 @@ h1= @post.title
 p= @post.body
 
 - if @post.creator == current_user
-  = link_to 'Edit', edit_post_path(@post), class: 'link-secondary'
+  = link_to 'Edit', edit_post_path(@post), class: 'link-secondary me-2'
   = link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'link-danger'
-
-hr
 
 h3 Comments
 - if user_signed_in?
-  span= link_to 'Add new comment', new_post_comment_path(@post)
+  = simple_form_for @post.post_comments.build, url: post_comments_path(@post) do |f|
+    = f.input :content, label: false, as: :text, placeholder: 'Enter comment'
+    = f.submit class: 'btn btn-outline-secondary btn-sm'
+hr
 
-ul.list-group.list-group-flush
-  - @comments.each do |comment|
-    li.list-group-item
-      .d-flex.w-100.justify-content-between
-        h5.mb-1= comment.user.email
-        small= comment.updated_at.strftime('%d-%B-%Y %H:%M')
-      p.mb-1= comment.content
-      - if comment.user == current_user
-        small= link_to 'Edit', edit_post_comment_path(@post, comment)
-        small= link_to 'Delete', post_comment_path(@post, comment), method: :delete, data: { confirm: 'Are you sure ?' }
+- if @comments.any?
+  ul.list-group.list-group-flush
+    = render @comments

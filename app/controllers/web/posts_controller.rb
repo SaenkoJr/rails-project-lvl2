@@ -2,13 +2,13 @@
 
 class Web::PostsController < Web::ApplicationController
   before_action :authenticate_user!, except: %i[index show]
+  before_action :set_post, only: %i[show edit update destroy]
 
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
     @comments = @post.post_comments.order(created_at: :desc)
   end
 
@@ -16,9 +16,7 @@ class Web::PostsController < Web::ApplicationController
     @post = Post.new
   end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
+  def edit; end
 
   def create
     @post = Post.new(post_params)
@@ -32,8 +30,6 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-
     if @post.update(post_params)
       redirect_to post_path(@post), notice: 'Post has been successfully updated'
     else
@@ -42,13 +38,16 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
 
     redirect_to posts_path, notice: 'Post has been successfully deleted'
   end
 
   private
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body, :post_category_id)

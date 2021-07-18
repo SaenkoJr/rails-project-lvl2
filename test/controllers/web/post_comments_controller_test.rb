@@ -9,11 +9,6 @@ class Web::PostCommentsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
   end
 
-  test '#new' do
-    get new_post_comment_path(@post)
-    assert_response :success
-  end
-
   test '#edit' do
     comment = post_comments(:one)
     get edit_post_comment_path(@post, comment)

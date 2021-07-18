@@ -1,0 +1,10 @@
+li.list-group-item
+  .d-flex.w-100.justify-content-between
+    h6.mb-1= post_comment.user.email
+    small= post_comment.updated_at.strftime('%F %H:%M')
+  p.mb-1= post_comment.content
+  - if post_comment.user == current_user
+    small= link_to 'Edit', edit_post_comment_path(@post, post_comment), class: 'me-2'
+    small= link_to 'Delete', post_comment_path(@post, post_comment),
+                             method: :delete, data: { confirm: 'Are you sure ?' },
+                             class: 'link-danger'
