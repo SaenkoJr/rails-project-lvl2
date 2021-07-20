@@ -1,9 +1,15 @@
 h1= @post.title
-p= @post.body
 
+hr
+
+p= @post.body
+div
+  = render "like"
 - if @post.creator == current_user
   = link_to 'Edit', edit_post_path(@post), class: 'link-secondary me-2'
   = link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure ?' }, class: 'link-danger'
+
+hr
 
 h3 Comments
 - if user_signed_in?

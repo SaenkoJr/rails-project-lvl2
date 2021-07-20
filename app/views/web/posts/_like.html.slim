@@ -1,0 +1,9 @@
+- if @user_like
+  = link_to post_like_path(@post, @user_like), method: :delete, class: 'text-decoration-none link-danger' do
+    i.fas.fa-heart.me-2
+    span.text-muted= @likes.count
+- else
+  = link_to post_likes_path(@post), method: :post, class: 'text-decoration-none link-secondary' do
+    i.fas.fa-heart.me-2
+    span.text-muted= @likes.count
+

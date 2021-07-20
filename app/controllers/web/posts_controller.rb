@@ -5,11 +5,13 @@ class Web::PostsController < Web::ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:creator)
   end
 
   def show
     @comments = @post.post_comments.order(created_at: :desc)
+    @likes = @post.post_likes
+    @user_like = @likes.find_by(user: current_user)
   end
 
   def new
