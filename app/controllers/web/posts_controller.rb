@@ -9,8 +9,8 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def show
-    @comments = @post.post_comments.order(created_at: :desc)
-    @likes = @post.post_likes
+    @comments = @post.comments.order(created_at: :desc)
+    @likes = @post.likes
     @user_like = @likes.find_by(user: current_user)
   end
 
@@ -52,6 +52,6 @@ class Web::PostsController < Web::ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :post_category_id)
+    params.require(:post).permit(:title, :body, :category_id)
   end
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PostComment < ApplicationRecord
+class Post::Comment < ApplicationRecord
   belongs_to :post
   belongs_to :user
   has_ancestry

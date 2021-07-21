@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   scope module: :web do
     root 'posts#index'
     resources :posts do
-      resources :comments, exclude: %i[index show], controller: 'post_comments'
-      resources :likes, only: %i[create destroy], controller: 'post_likes'
+      scope module: :posts do
+        resources :comments, exclude: %i[index show]
+        resources :likes, only: %i[create destroy]
+      end
     end
   end
 end

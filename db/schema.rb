@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_18_152516) do
+ActiveRecord::Schema.define(version: 2021_07_21_181800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,11 +45,11 @@ ActiveRecord::Schema.define(version: 2021_07_18_152516) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
-    t.bigint "post_category_id"
+    t.bigint "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "creator_id", null: false
-    t.index ["post_category_id"], name: "index_posts_on_post_category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,5 +68,5 @@ ActiveRecord::Schema.define(version: 2021_07_18_152516) do
   add_foreign_key "post_comments", "users"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
-  add_foreign_key "posts", "post_categories"
+  add_foreign_key "posts", "post_categories", column: "category_id"
 end
