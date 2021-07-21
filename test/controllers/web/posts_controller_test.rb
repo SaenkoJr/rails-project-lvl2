@@ -35,7 +35,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     attrs = {
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph,
-      post_category_id: category.id
+      category_id: category.id
     }
 
     post posts_path, params: { post: attrs }
@@ -45,8 +45,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     assert post
     assert_redirected_to post_path(post)
     assert_equal post.creator, @user
-    assert_equal post.post_category, category
-    assert_equal post.creator_id, @user.id
+    assert_equal post.category, category
   end
 
   test '#update' do
@@ -54,7 +53,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     category = post_categories('category_0')
     attrs = {
       title: Faker::Lorem.sentence,
-      post_category_id: category.id
+      category_id: category.id
     }
 
     patch post_path(old_post), params: { post: attrs }
@@ -64,7 +63,7 @@ class Web::PostsControllerTest < ActionDispatch::IntegrationTest
     assert post
     assert_redirected_to post_path(post)
     assert_not_equal post.title, old_post.title
-    assert_not_equal post.post_category, old_post.post_category
+    assert_not_equal post.category, old_post.category
   end
 
   test '#destroy' do
