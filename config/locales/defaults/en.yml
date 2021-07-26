@@ -30,4 +30,13 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: Blog
+  show: Show
+  edit: Edit
+  back: Back
+  destroy: Delete
+  destroy_confirmation: Are you sure ?
+
+  time:
+    formats:
+      default: "%d %b %Y %H:%M"

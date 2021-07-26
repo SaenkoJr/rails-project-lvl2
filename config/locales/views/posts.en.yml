@@ -1,0 +1,10 @@
+en:
+  posts:
+    index:
+      heading: Posts
+    new:
+      heading: Create post
+    edit:
+      heading: Update post
+    actions:
+      create: Create new post

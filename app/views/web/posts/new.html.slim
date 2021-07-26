@@ -1,6 +1,7 @@
-h1 New post
+h1= t(:heading, scope: 'posts.new')
+
 = render "form", post: @post
 
 hr
 
-= link_to 'Back', :back, class: 'btn btn-outline-primary'
+= link_to t(:back), :back, class: 'btn btn-outline-primary'

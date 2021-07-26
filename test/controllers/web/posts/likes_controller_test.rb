@@ -23,7 +23,7 @@ module Web
 
       test '#destroy' do
         like = post_likes(:post_like_two)
-        post = posts('post_1')
+        post = posts('post_2')
 
         assert_difference('Post::Like.count', -1) do
           delete post_like_path(post, like)

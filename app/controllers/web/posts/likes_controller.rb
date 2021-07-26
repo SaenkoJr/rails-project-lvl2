@@ -8,8 +8,9 @@ module Web
 
       def create
         like = @post.likes.build(user: current_user)
+
         unless like.save
-          flash[:alert] = like.errors[:base].first.full_message
+          flash[:alert] = like.errors[:user].first
         end
 
         redirect_to @post

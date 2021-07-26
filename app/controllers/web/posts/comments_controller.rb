@@ -14,24 +14,24 @@ module Web
         @comment.user = current_user
 
         if @comment.save
-          redirect_to post_path(@post), notice: 'Comment has been successfully created'
+          redirect_to post_path(@post), notice: t('.success', scope: :flash)
         else
-          redirect_to post_path(@post), alert: 'Comment has not been created'
+          redirect_to post_path(@post), alert: t('.error', scope: :flash)
         end
       end
 
       def update
         if @comment.update(comment_params)
-          redirect_to post_path(@post), notice: 'Comment has been successfully updated'
+          redirect_to post_path(@post), notice: t('.success', scope: :flash)
         else
-          render :edit, statsu: :unprocessable_entity
+          render :edit, status: :unprocessable_entity
         end
       end
 
       def destroy
         @comment.destroy
 
-        redirect_to post_path(@post), notice: 'Comment has been successfully deleted'
+        redirect_to post_path(@post), notice: t('.success', scope: :flash)
       end
 
       private

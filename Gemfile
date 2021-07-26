@@ -31,8 +31,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
+gem 'devise-i18n'
 
 gem 'ancestry'
+gem 'rails-i18n'
 gem 'simple_form'
 gem 'slim-rails'
 
@@ -53,6 +55,7 @@ group :development do
   # Can be configured to work on production as well see: https://github.com/MiniProfiler/rack-mini-profiler/blob/main/README.md
   gem 'rack-mini-profiler', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'i18n-debug'
   gem 'rubocop'
   gem 'spring'
 end

@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    models:
+      post: Post
+      post/comment: Comment
+    attributes:
+      post:
+        title: Title
+        body: Body
+        category: Category
+      post/comment:
+        content: Content
+      post/like:
+    errors:
+      models:
+        post/like:
+          attributes:
+            user:
+              post_owner: You cannot like your post
+

@@ -50,4 +50,7 @@ app-db-setup:
 app-db-migrate:
 	docker-compose run web make db-migrate
 
+attach:
+	docker attach rails-project-lvl2_web_1
+
 .PHONY: test

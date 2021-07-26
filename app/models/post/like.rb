@@ -7,6 +7,6 @@ class Post::Like < ApplicationRecord
   validate :not_post_owner
 
   def not_post_owner
-    errors.add(:base, 'You cannot like your post') if user == post.creator
+    errors.add(:user, :post_owner) if user == post.creator
   end
 end
