@@ -3,7 +3,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   = f.input :title
-  = f.input :body, as: :text
+  = f.input :body, as: :text, input_html: { rows: 10 }
   = f.association :category, prompt: :translate, input_html: { class: 'form-select' }
 
   = f.button :submit, class: 'btn btn-outline-secondary'
