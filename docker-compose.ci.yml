@@ -9,11 +9,11 @@ services:
       - db
     environment:
       - RAILS_ENV
+    # command: sh -c "bundle exec rails webpacker:install && bundle exec rails db:create db:migrate && bundle exec rake test"
+    command: sh -c "make ci-check"
   db:
     image: postgres:13-alpine
     ports:
       - 5432:5432
     environment:
       POSTGRES_HOST_AUTH_METHOD: trust
-    # command: sh -c "bundle exec rails webpacker:install && bundle exec rails db:create db:migrate && bundle exec rake test"
-    command: sh -c "make ci-check"
