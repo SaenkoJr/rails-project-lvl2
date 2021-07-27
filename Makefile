@@ -53,4 +53,11 @@ app-db-migrate:
 attach:
 	docker attach rails-project-lvl2_web_1
 
+ci-setup:
+	bundle install --without production development
+	yarn install
+	RAILS_ENV=test bin/rails db:prepare
+
+ci-check: ci-setup lint test
+
 .PHONY: test
