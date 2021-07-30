@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-alpine
+FROM ruby:3.0.1-alpine
 
 ARG PROJECT_ROOT=/app
 ARG PACKAGES="bash openssl-dev curl tzdata build-base postgresql-dev postgresql-client nodejs yarn"
