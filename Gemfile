@@ -37,7 +37,7 @@ gem 'simple_form'
 gem 'slim-rails'
 
 group :production do
-  gem 'pg', '~> 1.1'
+  gem 'pg', '~> 1.2.3'
 end
 
 group :development, :test do
