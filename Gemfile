@@ -47,6 +47,7 @@ group :development, :test do
   gem 'faker'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
+  gem 'sqlite3'
 end
 
 group :development do
