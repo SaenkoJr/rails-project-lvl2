@@ -35,24 +35,6 @@ lint-fix:
 heroku-console:
 	heroku run rails console
 
-app-test:
-	docker-compose run web make test $(ARGS)
-
-app-bash:
-	docker-compose run web bash
-
-app-rails-console:
-	docker-compose run web bin/rails c
-
-app-db-setup:
-	docker-compose run web make db-setup
-
-app-db-migrate:
-	docker-compose run web make db-migrate
-
-attach:
-	docker attach rails-project-lvl2_web_1
-
 ci-setup:
 	bundle install --without production development
 	yarn install
