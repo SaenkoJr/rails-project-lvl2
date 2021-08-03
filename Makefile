@@ -36,7 +36,7 @@ heroku-console:
 	heroku run rails console
 
 ci-setup:
-	bundle install --without production development
+	bundle install --without production
 	yarn install
 	RAILS_ENV=test bin/rails db:prepare
 
