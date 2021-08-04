@@ -10,7 +10,9 @@ class User < ApplicationRecord
            dependent: :destroy,
            inverse_of: :creator,
            foreign_key: :creator_id
-  has_many :post_comments,
-           dependent: :destroy
-  has_many :post_likes, dependent: :destroy, class_name: 'Post::Like'
+  has_many :post_comments, dependent: :destroy
+  has_many :post_likes,
+           dependent: :destroy,
+           inverse_of: :user,
+           class_name: 'Post::Like'
 end
