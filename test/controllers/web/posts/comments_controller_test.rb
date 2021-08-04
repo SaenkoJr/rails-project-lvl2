@@ -9,9 +9,6 @@ module Web
         @post = posts('post_1')
         @user = users('user_1')
         sign_in @user
-        pp '=================================================='
-        pp post_comments
-        pp '=================================================='
       end
 
       test '#edit' do
