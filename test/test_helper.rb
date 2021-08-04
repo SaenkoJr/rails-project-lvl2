@@ -16,4 +16,8 @@ end
 
 class ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
+
+  pp '=================================================='
+  pp ActiveSupport::TestCase.fixture_path
+  pp '=================================================='
 end
