@@ -8,9 +8,6 @@ module Web
 
       def create
         like = @post.likes.build(user: current_user)
-        pp '=================================================='
-        pp Post::Like.column_names
-        pp '=================================================='
 
         unless like.save
           flash[:alert] = like.errors[:user].first
