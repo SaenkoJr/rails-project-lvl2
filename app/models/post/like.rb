@@ -4,6 +4,10 @@ class Post::Like < ApplicationRecord
   belongs_to :user, inverse_of: :post_likes
   belongs_to :post, inverse_of: :likes
 
+  pp '=================================================='
+  pp self
+  pp '=================================================='
+
   validate :not_post_owner
 
   def not_post_owner
