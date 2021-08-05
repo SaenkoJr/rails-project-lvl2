@@ -13,6 +13,5 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :post_likes,
            dependent: :destroy,
-           inverse_of: :user,
-           class_name: 'Post::Like'
+           inverse_of: :user
 end

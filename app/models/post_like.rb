@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class Post::Like < ApplicationRecord
-  belongs_to :user, inverse_of: :post_likes
+class PostLike < ApplicationRecord
+  belongs_to :user
   belongs_to :post, inverse_of: :likes
 
   validate :not_post_owner

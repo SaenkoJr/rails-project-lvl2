@@ -22,4 +22,4 @@
 
     - if @comments.any?
       ul.list-group.list-group-flush
-        = render partial: 'web/posts/comments/comment', collection: @comments.filter { |comment| comment.is_root? }
+        = render partial: 'web/post_comments/comment', collection: @comments.filter { |comment| comment.is_root? }
