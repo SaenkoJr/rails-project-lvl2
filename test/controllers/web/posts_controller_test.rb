@@ -36,7 +36,7 @@ module Web
       attrs = {
         title: Faker::Lorem.sentence,
         body: Faker::Lorem.paragraph,
-        category_id: category.id
+        post_category_id: category.id
       }
 
       post posts_path, params: { post: attrs }
@@ -46,7 +46,7 @@ module Web
       assert post
       assert_redirected_to post_path(post)
       assert_equal post.creator, @user
-      assert_equal post.category, category
+      assert_equal post.post_category, category
     end
 
     test '#update' do
@@ -54,7 +54,7 @@ module Web
       category = post_categories('category_0')
       attrs = {
         title: Faker::Lorem.sentence,
-        category_id: category.id
+        post_category_id: category.id
       }
 
       patch post_path(old_post), params: { post: attrs }
@@ -64,7 +64,7 @@ module Web
       assert post
       assert_redirected_to post_path(post)
       assert_not_equal post.title, old_post.title
-      assert_not_equal post.category, old_post.category
+      assert_not_equal post.post_category, old_post.post_category
     end
 
     test '#destroy' do

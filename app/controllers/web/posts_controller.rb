@@ -53,7 +53,7 @@ module Web
     end
 
     def post_params
-      params.require(:post).permit(:title, :body, :category_id)
+      params.require(:post).permit(:title, :body, :post_category_id)
     end
   end
 end

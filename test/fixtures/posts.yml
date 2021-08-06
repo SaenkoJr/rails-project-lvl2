@@ -3,6 +3,6 @@
     title: <%= Faker::Lorem.sentence %>
     body: <%= Faker::Lorem.paragraph %>
     creator: user_<%= n %>
-    category: category_<%= n %>
+    post_category: category_<%= n %>
 <% end %>
 

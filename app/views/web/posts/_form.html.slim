@@ -4,6 +4,6 @@
 
   = f.input :title
   = f.input :body, as: :text, input_html: { rows: 10 }
-  = f.association :category, prompt: :translate, input_html: { class: 'form-select' }
+  = f.association :post_category, prompt: :translate, input_html: { class: 'form-select' }
 
   = f.button :submit, class: 'btn btn-outline-secondary'
