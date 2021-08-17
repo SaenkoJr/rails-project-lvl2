@@ -13,6 +13,6 @@ en:
         content: Enter comment
     prompts:
       post:
-        category: Select category
+        post_category: Select category
     error_notification:
       default_message: "Please review the problems below:"
