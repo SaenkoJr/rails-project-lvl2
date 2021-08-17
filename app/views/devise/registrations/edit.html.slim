@@ -11,7 +11,7 @@ h2
     = f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" }
     = f.input :current_password, hint: t(".we_need_your_current_password_to_confirm_your_changes"), required: true, input_html: { autocomplete: "current-password" }
   .form-actions
-    = f.button :submit, t(".update")
+    = f.button :submit, t(".update"), class: 'mt-2 mb-2 btn btn-outline-secondary'
 h3
   = t(".cancel_my_account")
 p
