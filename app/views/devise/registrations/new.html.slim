@@ -12,5 +12,5 @@ h2
               required: true,
               input_html: { autocomplete: "new-password" }
   .form-actions
-    = f.button :submit, t(".sign_up")
+    = f.button :submit, t(".sign_up"), class: 'mt-2 mb-2 btn btn-outline-secondary'
 = render "devise/shared/links"
