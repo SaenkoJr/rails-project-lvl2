@@ -9,7 +9,7 @@ import * as ActiveStorage from '@rails/activestorage'
 import 'channels'
 import 'bootstrap/js/src/collapse';
 import 'bootstrap/js/src/dropdown';
-import '@fortawesome/fontawesome-free/css/all'
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 Rails.start()
 Turbolinks.start()

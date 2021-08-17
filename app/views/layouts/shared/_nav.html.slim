@@ -8,7 +8,7 @@
           = link_to t(:create, scope: 'posts.actions'), new_post_path, class: 'nav-link link-dark'
         li.dropdown
           a#profile.nav-link.link-dark.px-2.dropdown-toggle type="button" data-bs-toggle="dropdown" aria-expanded="true" href="#"
-            i.fas.fa-user-circle.me-1
+            i.bi-person-circle.me-1
           ul.dropdown-menu.dropdown-menu-end aria-labelledby="profile"
             li.dropdown-item-text.d-flex.align-items-center
               .fw-bold= current_user.email
