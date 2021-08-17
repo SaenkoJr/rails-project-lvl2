@@ -12,5 +12,5 @@ class Post < ApplicationRecord
            inverse_of: :post,
            class_name: 'PostLike'
 
-  validates :title, :post_category, :creator, presence: true
+  validates :title, :body, :post_category, :creator, presence: true
 end
