@@ -28,4 +28,4 @@ li.list-group-item
 
   - if comment.has_children?
     ul.list-group.list-group-flush
-      = render partial: 'web/posts/comments/comment', collection: comment.children
+      = render partial: 'web/post_comments/comment', collection: comment.children
