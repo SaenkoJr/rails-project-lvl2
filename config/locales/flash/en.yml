@@ -9,12 +9,12 @@ en:
         destroy:
           success: Post has been successfully deleted
 
-        comments:
-          create:
-            success: Comment has been successfully created
-            error: Comment has not been created
-          update:
-            success: Comment has been successfully updated
-          destroy:
-            success: Comment has been successfully deleted
+      post_comments:
+        create:
+          success: Comment has been successfully created
+          error: Comment has not been created
+        update:
+          success: Comment has been successfully updated
+        destroy:
+          success: Comment has been successfully deleted
 

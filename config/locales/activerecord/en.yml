@@ -2,18 +2,18 @@ en:
   activerecord:
     models:
       post: Post
-      post/comment: Comment
+      post_comment: Comment
     attributes:
       post:
         title: Title
         body: Body
         category: Category
-      post/comment:
+      post_comment:
         content: Content
-      post/like:
+      post_like:
     errors:
       models:
-        post/like:
+        post_like:
           attributes:
             user:
               post_owner: You cannot like your post
