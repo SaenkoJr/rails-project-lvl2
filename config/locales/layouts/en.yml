@@ -2,6 +2,6 @@ en:
   layouts:
     shared:
       nav:
-        logout: Logut
-        sign_in: Login
-        sign_up: Sign-up
+        logout: Log out
+        sign_in: Sign in
+        sign_up: Sign up
