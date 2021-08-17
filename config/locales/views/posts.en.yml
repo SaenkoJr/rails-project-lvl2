@@ -1,5 +1,6 @@
 en:
   posts:
+    author: Author
     index:
       heading: Posts
     new:
