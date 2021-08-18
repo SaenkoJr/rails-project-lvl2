@@ -5,7 +5,9 @@
     hr
 
     p= @post.body
-    div
+    .d-flex.justify-content-between.align-items-center.mt-5
+      span.text-muted
+        = @post.creator.email
       = render "web/posts/like"
     - if @post.creator == current_user
       = link_to t(:edit), edit_post_path(@post), class: 'link-secondary me-2'
